@@ -29,6 +29,8 @@ void InputParser::calculateClicked()
 
   // qDebug()<<d<<"\n\n";
 
+
+
 }
 
 double InputParser::evaluateString(QString s)
