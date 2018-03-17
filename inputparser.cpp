@@ -67,7 +67,8 @@ double InputParser::evaluateString(QString s)
      }
 
 
-    //Follow PADMAS here -- To be done later
+    //Follow BODMAS here -- To be done later
+    // PADMAS can be optional for the user
 
     double d = numbers[0];
 
