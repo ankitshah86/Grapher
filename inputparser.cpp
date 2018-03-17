@@ -27,7 +27,7 @@ void InputParser::calculateClicked()
 
     answerLabel->setText(QString::number(d));
 
-  // qDebug()<<d<<"\n\n";
+    // qDebug()<<d<<"\n\n";
 
 
 
@@ -63,10 +63,35 @@ double InputParser::evaluateString(QString s)
         }
         else
         {
+            // i++;
+
+            //This condition is not working correctly ..
+            // Must Check the logic....
+
+            if(isParenthesis(sstd[i] == 1))
+            {
+                i++;
+
+                while(isParenthesis(sstd[i] != 2))
+                {
+                    tmp.append(sstd[i]);
+                    i++;
+                }
+
+                qDebug()<<tmp;
+                //strip the last character - it is a end Parenthesis
+                tmp.remove(tmp.length()-1,1);
+
+                qDebug()<<tmp;
+                double d = evaluateString(tmp);
+                numbers.append(d);
+
+            }
             i++;
+
         }
 
-     }
+    }
 
 
     //Follow BODMAS here -- To be done later
@@ -85,16 +110,16 @@ double InputParser::evaluateString(QString s)
 bool InputParser::isNumberOrDecimalPoint(char c)
 {
     if( c == '1'||
-        c == '2'||
-        c == '3'||
-        c == '4'||
-        c == '5'||
-        c == '6'||
-        c == '7'||
-        c == '8'||
-        c == '9'||
-        c == '0'||
-        c == '.')
+            c == '2'||
+            c == '3'||
+            c == '4'||
+            c == '5'||
+            c == '6'||
+            c == '7'||
+            c == '8'||
+            c == '9'||
+            c == '0'||
+            c == '.')
         return true;
 
     return false;
@@ -103,9 +128,9 @@ bool InputParser::isNumberOrDecimalPoint(char c)
 bool InputParser::isValidOperator(char c)
 {
     if(c == '+'||
-       c == '-'||
-       c == '*'||
-       c == '/')
+            c == '-'||
+            c == '*'||
+            c == '/')
         return true;
     return false;
 }
